@@ -1,0 +1,6 @@
+[submodule "RL4VLA"]
+	path = RL4VLA
+	url = https://github.com/gen-robot/RL4VLA.git
+[submodule "octo"]
+	path = octo
+	url = https://github.com/octo-models/octo.git
