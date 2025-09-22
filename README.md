@@ -1,5 +1,5 @@
 # VLA_MIPT
-MIPT Internship Test Assignment
+MIPT Internship Test Assignment. SmolVLM notebook contain code, the results of which were used in the attached work.().
 
 ## Install
 
@@ -113,4 +113,4 @@ PY
 
 ```
 
-#### When you 
+#### When you have completed the installation of the necessary libraries and environments, you can start exploring the SmolVLM notebook
