@@ -1,5 +1,5 @@
 # VLA_MIPT
-MIPT Internship Test Assignment. SmolVLM notebook contain code, the results of which were used in the attached work.().
+MIPT Internship Test Assignment. SmolVLM notebook contain code, the results of which were used in the attached work. (VLM_Report).
 
 ## Install
 
@@ -50,6 +50,8 @@ pip install scipy==1.12.0
 
 cd SimplerEnv && pip install -e . && cd ..
 ```
+
+#### Then we create an environment for working with a notebook and models
 
 ```bash
 
@@ -113,4 +115,4 @@ PY
 
 ```
 
-#### When you have completed the installation of the necessary libraries and environments, you can start exploring the SmolVLM notebook
+### When you have completed the installation of the necessary libraries and environments, you can start exploring the SmolVLM notebook
