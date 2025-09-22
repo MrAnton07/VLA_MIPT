@@ -3,9 +3,57 @@ MIPT Internship Test Assignment
 
 ## Install
 
+### First we need to install the OpenVLA, Maniskill, Training Pipeline:
+
+``` bash
+cd RL4VLA/
+
+# create conda env: rlvla_env
+conda create -n rlvla_env -y python=3.10
+conda activate rlvla_env
+
+# install dependencies
+pip install torch==2.2.0 torchvision==0.17.0 torchaudio==2.2.0 --index-url https://download.pytorch.org/whl/cu121
+cd openvla && pip install -e . && cd ..
+pip install -U tyro
+pip install datasets==3.3.2
+
+# special install for flash attention
+wget https://github.com/Dao-AILab/flash-attention/releases/download/v2.7.4.post1/flash_attn-2.7.4.post1+cu12torch2.2cxx11abiFALSE-cp310-cp310-linux_x86_64.whl
+pip install flash_attn-2.7.4.post1+cu12torch2.2cxx11abiFALSE-cp310-cp310-linux_x86_64.whl
+rm flash_attn-2.7.4.post1+cu12torch2.2cxx11abiFALSE-cp310-cp310-linux_x86_64.whl
+
+# install other dependencies
+cd ManiSkill && pip install -e . && cd ..
+cd SimplerEnv && pip install -e . && cd ..
+
+# optional: for ubuntu 2204
+# sudo apt-get install libglvnd-dev
+
 ```
 
-# 0) New env (Python 3.10), as requested: vlm_env
+#### Optional: Create octo-env for collect data with octo-small
+
+```bash
+conda create -n octo_env -y python=3.10
+conda activate octo_env
+
+git clone https://github.com/octo-models/octo.git
+
+cd ManiSkill && pip install -e . && cd ..
+
+cd octo && pip install -e . && pip install -r requirements.txt && cd ..
+pip install --upgrade "jax[cuda11_pip]==0.4.20" -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
+pip install torch==2.3.1 torchvision==0.18.1 torchaudio==2.3.1 "nvidia-cudnn-cu11>=8.7,<9.0" --index-url https://download.pytorch.org/whl/cu118
+pip install -U tyro
+pip install scipy==1.12.0
+
+cd SimplerEnv && pip install -e . && cd ..
+```
+
+```bash
+
+# 0) New env (Python 3.10) vlm_env
 conda create -n vlm_env -y python=3.10
 conda activate vlm_env
 
@@ -14,13 +62,7 @@ pip install --upgrade pip
 pip install torch==2.2.0 torchvision==0.17.0 torchaudio==2.2.0 \
   --index-url https://download.pytorch.org/whl/cu121
 
-# 2) Core ML stack for your imports
-# - transformers (recent enough for Idefics3 & vision2seq)
-# - accelerate & safetensors for HF runtime
-# - bitsandbytes for 4/8-bit (matches torch 2.2 well around 0.43.x)
-# - datasets (you previously pinned 3.3.2)
-# - peft for LoRA
-# - numpy, pillow, tqdm, matplotlib, scikit-learn, wandb
+
 pip install \
   "transformers>=4.44.2" \
   accelerate>=0.33.0 \
@@ -33,7 +75,8 @@ pip install \
   tqdm>=4.66 \
   matplotlib>=3.8 \
   scikit-learn>=1.4 \
-  wandb>=0.17
+  wandb>=0.17 \
+  trl==0.23.0 
 
 # Optional: tokenizers & timm sometimes help with VLMs
 pip install tokenizers>=0.19 timm>=0.9.16
@@ -44,13 +87,11 @@ wget https://github.com/Dao-AILab/flash-attention/releases/download/v2.7.4.post1
 pip install flash_attn-2.7.4.post1+cu12torch2.2cxx11abiFALSE-cp310-cp310-linux_x86_64.whl
 rm flash_attn-2.7.4.post1+cu12torch2.2cxx11abiFALSE-cp310-cp310-linux_x86_64.whl
 
-# 4) (If you also need ManiSkill / SimplerEnv in this env)
-# cd ManiSkill && pip install -e . && cd ..
-# cd SimplerEnv && pip install -e . && cd ..
-
 # 5) (Ubuntu 22.04 OpenGL dev libs, if needed for some envs/viewers)
 # sudo apt-get update && sudo apt-get install -y libglvnd-dev
 
+
+# Test 
 python - << 'PY'
 import torch
 from PIL import Image
@@ -72,4 +113,4 @@ PY
 
 ```
 
-После установки всех библиотек нам надо собрать датасет putonplate: запускаем скрипт а потом собираем json carrot_on_plate_files etc
+#### When you 
