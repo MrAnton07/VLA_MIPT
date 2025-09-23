@@ -97,11 +97,7 @@ wget https://github.com/Dao-AILab/flash-attention/releases/download/v2.7.4.post1
 pip install flash_attn-2.7.4.post1+cu12torch2.2cxx11abiFALSE-cp310-cp310-linux_x86_64.whl
 rm flash_attn-2.7.4.post1+cu12torch2.2cxx11abiFALSE-cp310-cp310-linux_x86_64.whl
 
-# 5) (Ubuntu 22.04 OpenGL dev libs, if needed for some envs/viewers)
-# sudo apt-get update && sudo apt-get install -y libglvnd-dev
-
-
-# Test 
+# Test
 python - << 'PY'
 import torch
 from PIL import Image
