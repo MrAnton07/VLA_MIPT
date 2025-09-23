@@ -1,6 +1,14 @@
 # VLA_MIPT
 MIPT Internship Test Assignment. SmolVLM notebook contain code, the results of which were used in the attached work. (VLM_Report).
 
+firstly, we do 
+
+``` bash
+git clone https://github.com/MrAnton07/VLA_MIPT.git
+cd VLA_MIPT
+git git submodule update --init --recursive
+```
+
 ## Install
 
 ### First we need to install the OpenVLA, Maniskill, Training Pipeline:
@@ -66,13 +74,13 @@ pip install torch==2.2.0 torchvision==0.17.0 torchaudio==2.2.0 \
 
 
 pip install \
-  "transformers>=4.44.2" \
+  transformers>=4.44.2 \
   accelerate>=0.33.0 \
   safetensors>=0.4.2 \
   bitsandbytes==0.43.1 \
   datasets==3.3.2 \
   peft==0.11.1 \
-  numpy==1.26 \
+  numpy==1.26.4 \
   pillow>=10.2 \
   tqdm>=4.66 \
   matplotlib>=3.8 \
